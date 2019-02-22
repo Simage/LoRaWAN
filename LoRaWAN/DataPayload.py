@@ -62,7 +62,7 @@ class DataPayload:
         padded_payload = []
         for i in range(k):
             idx = (i + 1) * 16
-            padded_payload += (self.payload[idx - 16:idx] + ([0x00] * 16))[:16]
+            padded_payload += (self.payload[idx - 16:idx] + bytes([0x00] * 16))[:16]
 
         payload = []
         for i in range(len(self.payload)):
