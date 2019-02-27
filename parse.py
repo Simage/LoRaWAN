@@ -37,8 +37,8 @@ for i,l in enumerate(sys.stdin):
     try:
         lorawan.read(packet)
     except:
-        logging.exception(f'Error reading packet {i}')
-        logging.error(l)
+        #logging.exception(f'Error reading packet {i}')
+        #logging.error(l)
         continue
 
     devaddr=lorawan.get_devaddr()[::-1].hex().upper()
