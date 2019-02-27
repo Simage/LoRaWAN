@@ -34,7 +34,12 @@ for i,l in enumerate(sys.stdin):
         continue
         
     lorawan = LoRaWAN.new(None,None)
-    lorawan.read(packet)
+    try:
+        lorawan.read(packet)
+    except:
+        logging.exception(f'Error reading packet {i}')
+        logging.error(l)
+        continue
 
     devaddr=lorawan.get_devaddr()[::-1].hex().upper()
     if devaddr in keys:
